@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card/index.astro';
+import { Button } from '@/components/ui/button';
+import { Tooltip } from '@/components/ui/tooltip';
+import { EXTERNAL_LINK } from '@/constants/index';
+---
+
+<Layout>
+  <main
+    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
+  >
+    <Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
+      <div class="flex w-full h-full">
+        <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
+          <div class="flex flex-col h-full">
+            <h6 class="text-sm font-light m-0 text-gray-500">welcome</h6>
+            <p class="m-0 font-light text-xl">
+              Hi, I'm <b class="font-bold">Gianmarco Cavallo</b>, a software
+              developer with strong focus on the user experience, animations and
+              micro interactions
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <a
+              href={EXTERNAL_LINK.GITHUB}
+              aria-label="github profile"
+              target="_blank"
+            >
+              <Button aria-label="github profile">
+                <span class="sr-only">GitHub Profile</span>
+              </Button>
+            </a>
+            <a
+              href={EXTERNAL_LINK.LINKEDIN}
+              aria-label="linkedin profile"
+              target="_blank"
+            >
+              <Button aria-label="linkedin profile">
+                <span class="sr-only">Linkedin Profile</span>
+              </Button>
+            </a>
+            <a
+              href={EXTERNAL_LINK.VSCO}
+              aria-label="VSCO profile"
+              target="_blank"
+            >
+              <Button aria-label="dribble profile">
+                <span class="sr-only">Dribble Profile</span>
+              </Button>
+            </a>
+            <Tooltip client:visible>
+              <Button aria-label="easter egg btn">
+                <span class="sr-only">Easter egg button</span>
+              </Button>
+            </Tooltip>
+          </div>
+        </div>
+      </div>
+    </Card>
+
+    <Card colSpan="md:col-span-1" rowSpan="md:row-span-6" title="About me">
+      <div class="flex flex-col gap-2">
+        <div class="text-sm font-light">
+          <p>
+            I'm a developer based in Brasil, I help companies create end-to-end
+            responsive and performant web pages. I have specialized in building
+            modern web applications using Typescript and Javascript.
+            <br />
+            My primary tools of choice includes:
+          </p>
+          <ul class="list-disc list-inside">
+            <li>Typescript</li>
+            <li>React</li>
+            <li>Next.js</li>
+            <li>Node.js</li>
+            <li>Nest</li>
+            <li>GCP</li>
+          </ul>
+        </div>
+        <p class="text-sm font-light">
+          Beyond coding, I'm passionate about learning languages, manga/anime,
+          skating, basketball and music. Funny fact about me: I use emojis for
+          the name of my playlists, based on how i feel when I listen.
+        </p>
+      </div>
+    </Card>
+  </main>
+</Layout>
