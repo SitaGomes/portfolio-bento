@@ -88,11 +88,113 @@ export const Globe: React.FC = () => {
       countryLines.add(line);
     }
 
+    // Add stars
+    const starsGeometry = new THREE.BufferGeometry();
+    const starsMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 1,
+      transparent: true,
+    });
+
+    const starsVertices = [];
+    for (let i = 0; i < 3000; i++) {
+      const x = (Math.random() - 0.5) * 2000;
+      const y = (Math.random() - 0.5) * 2000;
+      const z = (Math.random() - 0.5) * 2000;
+      starsVertices.push(x, y, z);
+    }
+
+    starsGeometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(starsVertices, 3),
+    );
+    const stars = new THREE.Points(starsGeometry, starsMaterial);
+    scene.add(stars);
+
+    // Shooting stars
+    const shootingStars: {
+      mesh: THREE.Mesh;
+      velocity: THREE.Vector3;
+      lifespan: number;
+      maxLifespan: number;
+    }[] = [];
+
+    const createShootingStar = () => {
+      // Create a shooting star
+      const geometry = new THREE.SphereGeometry(0.5, 8, 8);
+      const material = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 1,
+      });
+
+      const mesh = new THREE.Mesh(geometry, material);
+
+      // Random position far from center
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.random() * Math.PI;
+      const radius = 500;
+
+      mesh.position.x = radius * Math.sin(phi) * Math.cos(theta);
+      mesh.position.y = radius * Math.sin(phi) * Math.sin(theta);
+      mesh.position.z = radius * Math.cos(phi);
+
+      // Velocity toward center but with some randomness
+      const velocity = new THREE.Vector3(
+        -mesh.position.x / 50 + (Math.random() - 0.5) * 0.5,
+        -mesh.position.y / 50 + (Math.random() - 0.5) * 0.5,
+        -mesh.position.z / 50 + (Math.random() - 0.5) * 0.5,
+      );
+
+      const maxLifespan = 150 + Math.random() * 100;
+
+      scene.add(mesh);
+      shootingStars.push({
+        mesh,
+        velocity,
+        lifespan: 0,
+        maxLifespan,
+      });
+    };
+
+    // Create a shooting star every few seconds
+    const shootingStarInterval = setInterval(() => {
+      if (Math.random() > 0.7) {
+        // 30% chance each interval
+        createShootingStar();
+      }
+    }, 2000);
+
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
+
       earth.rotation.y += 0.001;
       countryLines.rotation.y += 0.001;
+      stars.rotation.y += 0.0001;
+
+      // Update shooting stars
+      shootingStars.forEach((star, index) => {
+        star.mesh.position.add(star.velocity);
+        star.lifespan++;
+
+        // Fade out as it approaches end of life
+        if (star.lifespan > star.maxLifespan * 0.7) {
+          (star.mesh.material as THREE.MeshBasicMaterial).opacity =
+            1 -
+            (star.lifespan - star.maxLifespan * 0.7) / (star.maxLifespan * 0.3);
+        }
+
+        // Remove if lifespan ended or too close to center
+        if (
+          star.lifespan >= star.maxLifespan ||
+          star.mesh.position.length() < 120
+        ) {
+          scene.remove(star.mesh);
+          shootingStars.splice(index, 1);
+        }
+      });
+
       controls.update();
       renderer.render(scene, camera);
     };
@@ -114,8 +216,14 @@ export const Globe: React.FC = () => {
         containerRef.current.removeChild(renderer.domElement);
       }
       window.removeEventListener('resize', handleResize);
+      clearInterval(shootingStarInterval);
+
+      // Clean up shooting stars
+      shootingStars.forEach((star) => {
+        scene.remove(star.mesh);
+      });
     };
   }, []);
 
-  return <div ref={containerRef} className="absolute inset-0 -z-10" />;
+  return <div ref={containerRef} className="fixed inset-0 -z-10" />;
 };

@@ -1,5 +1,6 @@
 ---
 import '@/styles/globals.css';
+import { PROFILE } from '../content/profileData';
 
 interface Props {
   title?: string;
@@ -8,7 +9,7 @@ interface Props {
   canonicalURL?: URL;
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description } = Astro.props;
 
 // Check if canonicalURL is valid before creating a URL object
 const canonicalURLString =
@@ -28,12 +29,35 @@ const ogImageURL = Astro.props.ogImage
   ? typeof Astro.props.ogImage === 'string'
     ? Astro.props.ogImage
     : Astro.props.ogImage.href
-  : '/og-image.png';
+  : '/sitagomes.png';
 
 // Make sure the ogImageURL is absolute
 const fullOgImageURL = ogImageURL.startsWith('http')
   ? ogImageURL
   : new URL(ogImageURL, canonicalURL).toString();
+
+const schema = {
+  '@context': 'http://schema.org',
+  '@type': 'Person',
+  name: 'Arthur Sita',
+  url: Astro.url.origin,
+  sameAs: [PROFILE.links.linkedin, PROFILE.links.github],
+  image: `${Astro.url.origin}/sitagomes.png`,
+  jobTitle: 'Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Ouvidor Digital',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Brazil',
+      addressCountry: 'BR',
+    },
+  },
+  nationality: {
+    '@type': 'Country',
+    name: 'Brazil',
+  },
+};
 ---
 
 <meta charset="utf-8" />
@@ -62,6 +86,7 @@ const fullOgImageURL = ogImageURL.startsWith('http')
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={fullOgImageURL} />
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 <link
   rel="preload"

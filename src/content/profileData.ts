@@ -24,7 +24,7 @@ export const PROFILE = {
     '👨‍🎤 I enjoy all genres of music, skating, playing basketball, reading manga and taking photos.',
     '💬 I love learning new languages.',
   ],
-  words: ['As each one has received a gift, minister it to one another'],
+  words: ['Nos olhos errados, a linha entre um gênio e um louco é muito fina.'],
   skills: [
     'Typescript',
     'Next.js',
