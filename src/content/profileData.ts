@@ -42,7 +42,7 @@ export const PROFILE = {
     github: 'https://github.com/sitagomes',
     linkedin: 'https://www.linkedin.com/in/sitagomes/',
     vsco: 'https://vsco.co/sitagomes',
-    twitter: 'https://twitter.com/sitagomes',
+    twitter: 'https://twitter.com/sita_gomes',
   },
   languages: [
     {
