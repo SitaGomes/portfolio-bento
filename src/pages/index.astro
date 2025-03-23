@@ -13,6 +13,10 @@ import BlogCard from '../components/sections/BlogCard.astro';
 import LanguageSelector from '../components/LanguageSelector.astro';
 import { Globe } from '../components/Globe';
 const SITE = PROFILE.site;
+
+// Base delay and increment between cards
+const baseDelay = 30;
+const delayIncrement = 100;
 ---
 
 <BaseLayout title={SITE.SEO.title} description={SITE.SEO.description}>
@@ -30,6 +34,7 @@ const SITE = PROFILE.site;
     <Card
       colSpan="lg:col-span-9 md:col-span-2"
       rowSpan="md:row-span-1 lg:row-span-4"
+      animationDelay={baseDelay}
     >
       <IntroCard />
     </Card>
@@ -39,6 +44,7 @@ const SITE = PROFILE.site;
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-1 lg:row-span-1"
       title="Language"
+      animationDelay={baseDelay + delayIncrement}
     >
       <LanguageSelector />
     </Card>
@@ -47,6 +53,7 @@ const SITE = PROFILE.site;
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-3 lg:row-span-5"
       title="About me"
+      animationDelay={baseDelay + delayIncrement * 2}
     >
       <AboutMe />
     </Card>
@@ -55,6 +62,7 @@ const SITE = PROFILE.site;
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-3 lg:row-span-4"
       title="Projects"
+      animationDelay={baseDelay + delayIncrement * 3}
     >
       <Projects />
     </Card>
@@ -63,6 +71,7 @@ const SITE = PROFILE.site;
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-1 lg:row-span-1"
       title="Your time"
+      animationDelay={baseDelay + delayIncrement * 4}
     >
       <TimeZoneCard />
     </Card>
@@ -70,17 +79,20 @@ const SITE = PROFILE.site;
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-1 lg:row-span-1"
       title=""
+      animationDelay={baseDelay + delayIncrement * 5}
     />
 
     <Card
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-1 lg:row-span-1"
       title=""
+      animationDelay={baseDelay + delayIncrement * 6}
     />
     <Card
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-1 lg:row-span-1"
       title="My time"
+      animationDelay={baseDelay + delayIncrement * 7}
     >
       <TimeZoneCard timezone={PROFILE.timezone} />
     </Card>
@@ -88,6 +100,7 @@ const SITE = PROFILE.site;
     <Card
       colSpan="lg:col-span-4 md:col-span-1"
       rowSpan="md:row-span-1 lg:row-span-2"
+      animationDelay={baseDelay + delayIncrement * 8}
     >
       <div class="flex h-full flex-col justify-between">
         <blockquote class="mt-6 border-l-2 pl-6 italic">
@@ -100,6 +113,7 @@ const SITE = PROFILE.site;
       colSpan="md:col-span-1 lg:col-span-5"
       rowSpan="md:row-span-2 lg:row-span-2"
       title="Wait... Can I survive outside?"
+      animationDelay={baseDelay + delayIncrement * 9}
     >
       <LanguagesCard />
     </Card>
@@ -108,6 +122,7 @@ const SITE = PROFILE.site;
       colSpan="md:col-span-1 lg:col-span-3"
       rowSpan="md:row-span-2 lg:row-span-2"
       title="Experiences"
+      animationDelay={baseDelay + delayIncrement * 10}
     >
       <ExperienceCard />
     </Card>
@@ -116,6 +131,7 @@ const SITE = PROFILE.site;
       colSpan="md:col-span-1 lg:col-span-6"
       rowSpan="md:row-span-1 lg:row-span-1"
       title="Blog Posts"
+      animationDelay={baseDelay + delayIncrement * 11}
     >
       <BlogCard />
     </Card>
@@ -123,6 +139,7 @@ const SITE = PROFILE.site;
       colSpan="md:col-span-1 lg:col-span-3"
       rowSpan="md:row-span-2 lg:row-span-2"
       title="Books I read"
+      animationDelay={baseDelay + delayIncrement * 12}
     >
       <Books />
     </Card>
@@ -130,6 +147,7 @@ const SITE = PROFILE.site;
       colSpan="md:col-span-1 lg:col-span-6"
       rowSpan="md:row-span-2 lg:row-span-1"
       title="Contact"
+      animationDelay={baseDelay + delayIncrement * 13}
     >
       <div
         class="flex h-full w-full items-center justify-center text-center text-sm"

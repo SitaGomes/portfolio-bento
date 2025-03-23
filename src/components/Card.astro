@@ -1,24 +1,39 @@
 ---
-import ContentCard from './ContentCard.astro'
-import { Card as ShadcnCard } from './ui/card'
-import { SquareArrowOutUpRight } from 'lucide-react'
+import ContentCard from './ContentCard.astro';
+import { Card as ShadcnCard } from './ui/card';
+import { SquareArrowOutUpRight } from 'lucide-react';
 
 interface Props {
-  title?: string
-  body?: string
-  colSpan?: string
-  rowSpan?: string
-  href?: string
-  colorText?: string
+  title?: string;
+  body?: string;
+  colSpan?: string;
+  rowSpan?: string;
+  href?: string;
+  colorText?: string;
+  animationDelay?: number;
 }
 
-const { title, body, colSpan, rowSpan, href, colorText } = Astro.props
+const {
+  title,
+  body,
+  colSpan,
+  rowSpan,
+  href,
+  colorText,
+  animationDelay = 0,
+} = Astro.props;
+
+// Calculate animation delay styles
+const animationStyle = animationDelay
+  ? { animationDelay: `${animationDelay}ms` }
+  : {};
 ---
 
 <ShadcnCard
   className={`card-animate transfor-y-[-40%] align-start perspective-1200 group group relative col-span-1 h-auto w-full flex-none transform justify-start overflow-hidden p-6 shadow-lg transition duration-75 ease-in-out ${
     colSpan || 'md:col-span-2'
-  } ${rowSpan || ''} ${href ? 'cursor-pointer hover:border-primary' : ''}`}
+  } ${rowSpan || ''} ${href ? 'cursor-pointer hover:border-primary' : ''} animated-card`}
+  style={animationStyle}
 >
   {
     href ? (
@@ -38,3 +53,22 @@ const { title, body, colSpan, rowSpan, href, colorText } = Astro.props
     )
   }
 </ShadcnCard>
+
+<style>
+  .animated-card {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: card-appear 0.8s ease-out forwards;
+  }
+
+  @keyframes card-appear {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
