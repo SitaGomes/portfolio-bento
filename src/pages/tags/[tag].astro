@@ -3,31 +3,13 @@ import IndexPageLayout from '../../layouts/IndexPageLayout.astro';
 import { getAndGroupUniqueTags } from '../../lib/utils';
 import ProjectCard from '../../components/ProjectCard.astro';
 
-interface Props {
-  items: any[];
-}
-
-export async function getStaticPaths(): Promise<
-  Array<{
-    params: { tag: string };
-    props: { items: any[] };
-  }>
-> {
+export async function getStaticPaths() {
   const tagItemsMap = await getAndGroupUniqueTags();
 
-  const result: Array<{
-    params: { tag: string };
-    props: { items: any[] };
-  }> = [];
-
-  tagItemsMap.forEach((items, tag) => {
-    result.push({
-      params: { tag },
-      props: { items },
-    });
-  });
-
-  return result;
+  return Object.entries(tagItemsMap).map(([tag, items]) => ({
+    params: { tag },
+    props: { items },
+  }));
 }
 
 const { tag } = Astro.params;
