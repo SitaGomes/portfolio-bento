@@ -1,0 +1,13 @@
+---
+slug: 'monolith'
+title: 'Hello'
+description: 'Hello'
+startDate: 2023-01-25
+image:
+  {
+    url: 'https://miro.medium.com/v2/resize:fit:720/format:webp/0*4d57C72wfJLzldjx.png',
+    alt: 'K8s',
+  }
+tags: ['Kubernetes', 'Security']
+canonical: https://medium.com/@TechTim42/how-to-make-kubernetes-cluster-hybrid-to-cross-private-subnet-and-public-subnet-77a89b14fc5c
+---

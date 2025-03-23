@@ -21,7 +21,8 @@ export const PROFILE = {
   shortIntros: [
     '💻 Full Stack Developer | Founder',
     '🌏 From 🇧🇷 & 🇦🇴 to the world',
-    '👨‍🎤 I love all genres of music, skating, playing basketball, reading manga and taking photos.',
+    '👨‍🎤 I enjoy all genres of music, skating, playing basketball, reading manga and taking photos.',
+    '💬 I love learning new languages.',
   ],
   words: ['As each one has received a gift, minister it to one another'],
   skills: [
@@ -58,7 +59,7 @@ export const PROFILE = {
     },
     {
       title: 'Spanish',
-      level: 'B1',
+      level: 'B2',
     },
     {
       title: 'Japanese',

@@ -11,6 +11,7 @@ import LanguagesCard from '../components/sections/LanguagesCard.astro';
 import { PROFILE } from '../content/profileData';
 import BlogCard from '../components/sections/BlogCard.astro';
 import LanguageSelector from '../components/LanguageSelector.astro';
+import { Globe } from '../components/Globe';
 const SITE = PROFILE.site;
 ---
 
@@ -67,7 +68,11 @@ const SITE = PROFILE.site;
       colSpan="lg:col-span-3 md:col-span-1"
       rowSpan="md:row-span-1 lg:row-span-1"
       title="My time"
-    />
+    >
+      <div class="h-full w-full absolute inset-0 -z-10">
+        <Globe client:load />
+      </div>
+    </Card>
 
     <Card
       colSpan="lg:col-span-3 md:col-span-1"
@@ -96,7 +101,7 @@ const SITE = PROFILE.site;
     <Card
       colSpan="md:col-span-1 lg:col-span-5"
       rowSpan="md:row-span-2 lg:row-span-2"
-      title="What I can speak"
+      title="Wait... Can I survive outside?"
     >
       <LanguagesCard />
     </Card>
