@@ -1,0 +1,36 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import HeadSEO from '../components/HeadSEO.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: URL;
+  canonicalURL?: URL;
+}
+
+const { title, description, ogImage, canonicalURL } = Astro.props;
+---
+
+<script is:inline>
+  // Force dark mode and remove any stored theme preference
+  document.documentElement.classList.add('dark');
+  localStorage.setItem('theme', 'dark');
+</script>
+
+<html lang="pt-BR">
+  <head>
+    <HeadSEO
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      canonicalURL={canonicalURL}
+    />
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen bg-background font-sans antialiased min-w-sm">
+    <div class="flex flex-col items-center justify-center">
+      <slot />
+    </div>
+  </body>
+</html>

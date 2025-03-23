@@ -1,48 +1,90 @@
-# Astro Starter Kit: Basics
+# TechTim's Astro Bento Portfolio
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+This template helps you build a portfolio using Astro, Typescript, React, Tailwind CSS, and Shadcn UI.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+- [Live Demo](https://techtim42.com)
+- [GitHub Repo](https://github.com/tim-hub/techtim-astro-bento-portfolio)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Technologies Used
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This project utilizes the following technologies:
 
-## 🚀 Project Structure
+- **Astro**: A modern framework for building fast and efficient websites.
+- **Tailwind CSS**: A utility-first CSS framework for rapid and responsive design.
+- **Shadcn UI**: A collection of accessible and easy-to-use UI components.
+- **React**: For interactive components and advanced functionality.
+- **TypeScript**: For static type checking and improved developer experience.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Requirements
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Before starting, make sure you have the following requirements installed:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- Node.js (version 18 or higher)
+- pnpm (version 8 or higher)
 
-## 🧞 Commands
+## Installation
 
-All commands are run from the root of the project, from a terminal:
+To install and run the project locally, follow these steps:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+1. Clone this repository:
 
-## 👀 Want to learn more?
+   ```bash
+   git clone https://github.com/tim-hub/techtim-astro-bento-portfolio
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+2. Navigate to the project directory:
+
+   ```bash
+   cd techtim-astro-bento-portfolio
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+5. Open your browser and visit `http://localhost:4312` to see your portfolio in action.
+6. Config your site
+   1. Edit `src/content/profileData.ts` to add your profile data
+   2. Edit `astro.config.mjs` to change the site information
+
+
+## Important Considerations
+
+- **Accessibility**: Ensure your portfolio is accessible to all users, including those with disabilities.
+- **SEO**: Optimize your portfolio for search engines by adding meta tags and relevant content.
+- **Performance**: Use modern web development practices to ensure optimal performance, such as lazy loading images and minimizing CSS/JS.
+- **Responsive Design**: Make sure your portfolio looks good on devices of all sizes, from mobile to desktop screens.
+
+## Contributions
+
+Contributions are welcome! If you have ideas or improvements, please open an issue or submit a pull request.
+
+## License
+
+- This source codes are licensed under the [MIT License](LICENSE).
+- The content (`src/content/`) of the portfolio is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+- The images (`public/`) used in the project are for template demonstration purposes only and should not be reused without permission.
+
+## Inspiration
+
+This project was inspired by several outstanding portfolios. Here are some that served as references:
+
+- [Bento Like Portfolio](https://github.com/Ladvace/astro-bento-portfolio)
+- [Minimal and bento Portfolio ](https://github.com/bue221/astro-portfolio)
+
+### Differences / Improvements
+
+- Centralised data management inside one folder
+  - Use Astro recommended [Content Collection](https://docs.astro.build/en/guides/content-collections/) to manage data
+  - `src/content` folder for blog posts, project data and profile data
+  - `src/content/profileData.ts` for general profile data
+- Tags system
+- Simplified Dark/Light mode toggle

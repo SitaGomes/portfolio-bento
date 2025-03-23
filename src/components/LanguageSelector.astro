@@ -1,0 +1,69 @@
+---
+// LanguageSelector.astro
+---
+
+<div class="flex justify-around items-center h-full">
+  <button
+    class="p-2 hover:bg-gray-700 rounded-md transition-all"
+    aria-label="Change to English"
+    data-lang="en"
+  >
+    <img src="/us.svg" alt="USA Flag" class="w-8 h-8" />
+  </button>
+  <button
+    class="p-2 hover:bg-gray-700 rounded-md transition-all"
+    aria-label="Change to Portuguese"
+    data-lang="pt-BR"
+  >
+    <img src="/br.svg" alt="Brazil Flag" class="w-8 h-8" />
+  </button>
+  <button
+    class="p-2 hover:bg-gray-700 rounded-md transition-all"
+    aria-label="Change to French"
+    data-lang="fr"
+  >
+    <img src="/fr.svg" alt="France Flag" class="w-8 h-8" />
+  </button>
+  <button
+    class="p-2 hover:bg-gray-700 rounded-md transition-all"
+    aria-label="Change to Spanish"
+    data-lang="es"
+  >
+    <img src="/es.svg" alt="Spain Flag" class="w-8 h-8" />
+  </button>
+</div>
+
+<script>
+  // Language switching functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const languageButtons = document.querySelectorAll('.language-flag');
+    const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+
+    // Set active state for current language
+    document
+      .querySelector(`[data-lang="${currentLang}"]`)
+      ?.classList.add('ring-2', 'ring-orange-500');
+
+    languageButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        // Remove active state from all buttons
+        languageButtons.forEach((btn) =>
+          btn.classList.remove('ring-2', 'ring-orange-500'),
+        );
+
+        // Add active state to clicked button
+        button.classList.add('ring-2', 'ring-orange-500');
+
+        // Get language code
+        const lang = button.getAttribute('data-lang');
+
+        // Save preference
+        localStorage.setItem('preferredLanguage', lang || 'pt-BR');
+
+        // Reload page to apply language change
+        // Or use a more sophisticated approach to change content dynamically
+        window.location.reload();
+      });
+    });
+  });
+</script>

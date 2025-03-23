@@ -1,0 +1,16 @@
+---
+import { Badge } from '../ui/badge';
+import { PROFILE } from '../../content/profileData';
+---
+
+<div class="mt-2 flex w-full flex-wrap items-center justify-center gap-2">
+  {
+    PROFILE.languages.map((language) => (
+      <>
+        <Badge variant="outline">
+          {language.title} - {language.level}
+        </Badge>
+      </>
+    ))
+  }
+</div>
