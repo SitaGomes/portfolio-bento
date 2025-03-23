@@ -15,9 +15,9 @@ export const PROFILE = {
   headLine: 'Full Stack Developer',
   headLine2:
     'I help companies create end-to-end responsive and performant web pages.',
-  website: 'http://localhost:4321',
+  website: 'https://arthursita.netlify.app',
   repo: 'https://github.com/tim-hub/techtim-astro-bento-portfolio',
-  avatarUrl: 'http://localhost:4321/sitagomes.png',
+  avatarUrl: 'https://arthursita.netlify.app/sitagomes.png',
   shortIntros: [
     '💻 Full Stack Developer | Founder',
     '🌏 From 🇧🇷 & 🇦🇴 to the world',
